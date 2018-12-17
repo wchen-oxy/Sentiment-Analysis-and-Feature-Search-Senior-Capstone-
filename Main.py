@@ -1,6 +1,7 @@
 from json_convert import load_dict
 from json_to_main import sort
 from classify_v2 import file_create, classify
+from classify_v2_no_tag import classify_raw
 import json
 
 file1 = "yelp_dataset/yelp_academic_dataset_review.json"
@@ -22,7 +23,7 @@ file4 = 'raw_output/f5O7v_X_jCg2itqacRfxhg.txt'
 def section_two(address):
     #This section of code will be our next classifier:
 
-    dependencies = classify(address)
+    dependencies = classify_raw(address)
     return dependencies
 #section_one()
 #create the list of relevant things
@@ -30,7 +31,7 @@ def section_two(address):
 #sort out the stuff
 address = "cleaned/" + file4
 list = section_two(address)
-with open("cleaned/output/cleaned.txt", "a+") as finished:
+with open("cleaned/output/cleaned_notag.txt", "a+") as finished:
     json.dump(list, finished)
 
 
